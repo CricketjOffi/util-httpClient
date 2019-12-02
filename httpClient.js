@@ -3,11 +3,8 @@
  */
 const https = require('https');
 
-exports = {
-    post: (URL, body) => {
-        return new Promise((resolve, reject) => {
-            https.post(URL, body ,(resp) => {
-  let data = '';
+const callback = (resp) => {
+    let data = '';
 
   resp.on('data', (chunk) => {
     data += chunk;
@@ -19,7 +16,13 @@ exports = {
 
 }).on("error", (err) => {
   reject(err)
-});
+}); 
+}
+
+exports = {
+    post: (URL, body) => {
+        return new Promise((resolve, reject) => {
+            https.post(URL, body ,(resp) => {
         });
     }
 }
