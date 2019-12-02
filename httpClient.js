@@ -14,15 +14,14 @@ const callback = (resp) => {
       resolve(JSON.parse(data));
   });
 
-}).on("error", (err) => {
-  reject(err)
-}); 
 }
 
 exports = {
     post: (URL, body) => {
         return new Promise((resolve, reject) => {
-            https.post(URL, body ,(resp) => {
-        });
+            https.post(URL, body ,callback);
+    },
+    get: (URL, body, params) => {
+      return
     }
 }
